@@ -1,9 +1,9 @@
 import Button from './Button.js'
 
-const Header = (props) => {
+const Header = ({ title }) => {
     return (
         <header className='header'>
-            <h1 >{props.title} Task Tracker</h1>
+            <h1>{title} Task Tracker</h1>
             <Button color='green'/>
             <Button color='crimson' text='Hello1'/>
         </header>
