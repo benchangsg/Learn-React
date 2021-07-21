@@ -3,7 +3,8 @@ import Tasks from './components/Tasks.js'
 import { useState } from 'react'
 import AddTask from './components/AddTask.js'
 
-function App() {
+const App = () => {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([{
     id: 1,
     title: 'Morning Routine',
@@ -23,6 +24,13 @@ function App() {
     reminder: false,
   }])
 
+  //Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newTask = {id, ...task}
+    setTasks(...tasks, newTask)
+  }
+
   //Delete Task Function
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
@@ -36,8 +44,8 @@ function App() {
   return (
     <div className="container">
       
-      <Header title='Nats' />
-      <AddTask />
+      <Header showAddTask={showAddTask} onAdd={() => setShowAddTask(!showAddTask)}/>
+      {showAddTask && <AddTask addTask={addTask}/>}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
 
     </div>
