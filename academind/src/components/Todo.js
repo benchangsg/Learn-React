@@ -11,7 +11,7 @@ const Todo = (props) => {
     setModalIsOpen(true)
   }
 
-  const closeModal = () => setModalIsOpen(false)
+  const closeModalHandler = () => setModalIsOpen(false)
 
   return (
     <div className="card">
@@ -21,8 +21,8 @@ const Todo = (props) => {
           Delete
         </button>
       </div>
-      {ModalIsOpen && <Modal onCancel={closeModal} onConfirm={closeModal}/>}
-      {ModalIsOpen && <Backdrop closeModal={closeModal}/>}
+      {ModalIsOpen && <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler}/>}
+      {ModalIsOpen && <Backdrop closeModalHandler={closeModalHandler}/>}
     </div>
   );
 };
